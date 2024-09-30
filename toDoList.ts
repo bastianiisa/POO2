@@ -11,10 +11,12 @@ class Tarefa {
         this.status = false;
     }
 
+     // Método para marcar a tarefa como completa (true).
     tarefaCompleta() {
         this.status = true; 
     }
 
+    // Método que exibe informações da tarefa (descrição e status).
     exibirInfo(): string {
         return `O status da tarefa "${this.descricao}˜ é: ${this.status}.`; 
     }
@@ -28,20 +30,23 @@ class FilaDeTarefas {
         this.tarefas = []
     }
 
+    // Método para adicionar uma nova tarefa à lista.
     adicionarTarefa(tarefa: Tarefa): void {
         this.tarefas.push(tarefa);
         console.log("Tarefa adicionada com sucesso!");
     }
 
+    // Método para remover a primeira tarefa da lista (como uma fila FIFO).
     removerTarefa(): void{
         if (this.tarefas.length === 0) {
             console.log("Nenhuma tarefa na fila.");
         } else {
-            this.tarefas.shift();
+            this.tarefas.shift(); // Remove o primeiro elemento da lista.
             console.log("Primeira tarefa removida.");
         }
     }
 
+    // Método para listar todas as tarefas na fila.
     listarTarefas(): void{
         if (this.tarefas.length === 0) {
             console.log("Nenhuma tarefa na fila.");
@@ -53,6 +58,8 @@ class FilaDeTarefas {
         }
     }
 
+    // Método para marcar a primeira tarefa na fila como concluída.
+    tarefaPronta(): void {
     tarefaPronta(): void{
         if (this.tarefas.length === 0) {
             console.log("Nenhuma tarefa na fila.");
@@ -79,6 +86,7 @@ function menu(){
         opcao = readlineSync.question("Selecione uma opção: ");
 
 
+         // Controle de fluxo baseado na escolha do usuário.
         switch (opcao){
             case '1':
                 const descricao = readlineSync.question("Insira a descrição da tarefa:")
